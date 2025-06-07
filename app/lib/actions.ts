@@ -69,8 +69,8 @@ const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function updateInvoice(
   id: string,
-  formData: FormData,
-  prevState: State
+  prevState: State,
+  formData: FormData
 ) {
   const validatedFields = UpdateInvoice.safeParse({
     customerId: formData.get("customerId"),
@@ -85,7 +85,6 @@ export async function updateInvoice(
     };
   }
   const { customerId, amount, status } = validatedFields.data;
-
   const amountInCents = amount * 100;
 
   try {
